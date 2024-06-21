@@ -1,0 +1,103 @@
+.container {
+    width: 100%;
+    background-color: rgb(35, 35, 35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.carrousel {
+    width: 80%;
+    height: 80%;
+    border-radius: 25px;
+    background-color: rgb(104, 37, 162);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+}
+
+.arrows {
+    height: 100%;
+    width: 4rem;
+    background-color: rgba(128, 128, 128, 0.429);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.right {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.arrows img {
+    width: 50%;
+}
+
+.boxes {
+    background-color: rgba(128, 128, 128, 0.162);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out; 
+}
+
+@keyframes imgstranslate {
+    0% {
+        transform: translateX(0)
+    }
+    100% {
+        transform: translateX(-5%);
+    }
+}
+@keyframes bigimgmove {
+    0% {
+        width: 35%;
+        height: 60%;
+    }
+    100% {
+        width: 40%;
+        height: 70%;
+      
+    }
+  }
+
+.bigbox {
+    width: 40%;
+    height: 70%;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.176);
+    animation: bigimgmove 1s ease-in infinite;
+
+}
+
+.smallbox {
+    width: 35%;
+    height: 60%;
+}
+
+.bigbox img {
+    width: 50%;
+    transform: scale(1);
+}
+
+.smallbox img {
+    width: 45%;
+    transform: scale(0.8);
+}
+
+.boxes span {
+    color: white;
+    font-weight: bold;
+}

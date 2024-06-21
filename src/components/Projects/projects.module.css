@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.boxes {
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1rem;
+}
+
+.boxes a, .boxes a:hover {
+    color: white;
+}
+
+.boxes:hover {
+    background-color: rgba(128, 128, 128, 0.311);
+}
+
+.boxes img {
+    width: 4rem;
+}

@@ -1,0 +1,90 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* footer */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.543);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.iconbox {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.window {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.dark {
+    background: linear-gradient( rgb(0, 0, 0), rgb(30, 0, 69));
+}
+
+.dark a, .dark a:hover {
+    color: white;
+    font-weight: 400;
+}
+
+.light {
+    background: linear-gradient(rgb(198, 198, 198), white);
+    color: black;
+}
+
+.light a, .light a:hover {
+    color: black;
+    font-weight: 400;
+}
+
+/*window*/
+
+.boxescontainer {
+    width: 23rem;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.boxes {
+    width: 4rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.boxes:hover {
+    background-color: rgba(128, 128, 128, 0.082);
+    border: 1px solid rgb(123, 123, 123);
+}
+
+.boxes img {
+    width: 3rem;
+}
+
+.invert {
+    filter: invert(100%)
+}
+

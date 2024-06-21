@@ -1,0 +1,79 @@
+@keyframes windowPopUp {
+    from {
+        width: 10%;
+        right: 90%;
+        top: 5%;
+    }
+    to {
+        width: 50%;
+        right: 10%;
+        top: 20%;
+    }
+}
+
+@keyframes windowMaximize {
+    from {
+        width: 50%;
+        right: 10%;
+        top: 20%;
+        height: 50%;
+    }
+
+    to {
+        width: 100%;
+        right: 0;
+        top: 0;
+        height: 90%;
+    }
+    
+}
+
+.smallwindow {
+position: absolute;
+right: 10%;
+top: 20%;
+ width: 50%;
+ height: 60%;
+ background-color: rgb(35, 35, 35);
+ border: 2px solid grey;
+ animation: windowPopUp 300ms ease-in
+}
+
+
+.bigwindow {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 90%;
+ background-color: black;
+ border: 2px solid grey;
+ box-sizing: border-box;
+ animation: windowMaximize 200ms ease-in-out;
+}
+
+.windowheader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(to right, rgb(255, 247, 247), rgb(218, 218, 218), rgb(241, 241, 241))
+}
+
+.iconscontainer {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.iconscontainer img {
+    width: 1.5rem;
+}
+
+.wndbtn:hover {
+    filter: invert(40%)
+}
+.closebtn:hover {
+    filter: invert(30%) sepia(87%) saturate(5615%) hue-rotate(351deg) brightness(88%) contrast(135%);
+}
+
