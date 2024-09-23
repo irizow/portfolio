@@ -1,5 +1,5 @@
 import App from "../App";
-import About from "../components/About/About";
+import About from "../components/About/AboutMain";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 export const routes = [

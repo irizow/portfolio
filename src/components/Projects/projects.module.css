@@ -3,24 +3,34 @@
     flex-wrap: wrap;
 }
 
-.boxes {
+.projboxes {
     width: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 4rem;
 }
 
-.boxes a, .boxes a:hover {
+@media screen and (max-width: 750px) {
+    .projboxes a {
+        font-size: 20px;
+    }
+
+    .projboxes img {
+        width: 3rem;
+    }
+}
+
+.projboxes a, .projboxes a:hover {
     color: white;
 }
 
-.boxes:hover {
+.projboxes:hover {
     background-color: rgba(128, 128, 128, 0.311);
 }
 
-.boxes img {
+.projboxes img {
     width: 4rem;
 }

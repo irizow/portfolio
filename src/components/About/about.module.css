@@ -1,16 +1,92 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(../../assets/fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: black;
+    position: relative;
+  }
+
+
+  @keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 60%;
+    }
+    
+  }
+
+.desktop {
+    z-index: 10000;
+    display: flex;
+    border-radius: 25px;
+    border: 1px solid white;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 1rem;
+    position: fixed;
+    opacity: 60%;
+    gap: 0.5rem;
+    top: 1rem;
+    left: 1rem;
+    animation: appear 6s ease-in;
+}
+
+.desktop:hover {
+    opacity: 100%;
+}
+
+.desktop span {
+    font-size: 0.8rem;
+    color: white;
+}
+
+.desktop img {
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(100%)
+}
+
+
 .container {
     width: 100vw;
     min-height: 100vh;
-    background-color: black;
+    background-repeat: no-repeat;
+    background-size:cover;
     display: flex;
     justify-content: center;
     padding: 5rem;
     box-sizing: border-box;
+    background: url(../../assets/images/backgroundstars3.jpg);
+    background-size: contain;
 }
 
+
 .titlewrapper {
-    padding: 4rem;
-    width: 80%;
+    position: absolute;
+    z-index: 1000;
+    padding: 4rem 0rem;
+    width: 90%;
     border-radius: 25px;
     border: 2px solid grey;
     display: flex;
@@ -19,6 +95,7 @@
     position: relative;
 }
 
+
 .span1, .span2 {
     font-size: 3rem;
 }
@@ -26,6 +103,7 @@
 .span2 {
     color: #b062f8;
     white-space: pre;
+    font-weight: 500;
 }
 
 .arrowdown {
@@ -37,16 +115,23 @@
     padding: 1rem;
     position: fixed;
     bottom: 7rem;
-    z-index: 100;
+    z-index: 10000;
     opacity: 0%;
-    animation: arrowblink 3s 3s infinite ease-in-out;
+    animation: blink 3s 3s infinite ease-in-out;
+}
+
+.arrowdown:hover {
+    background-color: white;
+    opacity: 100%;
+    animation: none;
 }
 
 .arrowdown img {
     width: 2rem;
     height: 2rem;
 }
-@keyframes arrowblink {
+
+@keyframes blink {
     0% {
         opacity: 10%;
     }
@@ -61,8 +146,168 @@
     
 }
 
-.description {
-    width: 100vw;
-    min-height: 100vh;
-    background-color: rgb(15, 1, 47);
+/*media query title */
+@media screen and (max-width: 900px) {
+    .container {
+        padding: 1rem;
+        align-items: center;
+    }
+    
+    .titlewrapper {
+        height: 70%;
+        width: 95%;
+        flex-direction: column;
+    }
 }
+@media screen and (max-width: 750px) {
+    .html, body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        padding: 1rem;
+        align-items: center;
+    }
+    .titlewrapper {
+        height: 70%;
+        width: 95%;
+        flex-direction: column;
+    }
+
+    .span1, .span2 {
+        font-size: 2rem;
+    }
+}
+
+/*About me*/
+
+
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 5rem 0;
+    background-size: contain;
+    background: linear-gradient(black, rgb(94, 0, 128),rgb(111, 31, 181), rgb(75, 67, 228));
+}
+
+
+
+.aboutcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+.contentwrapper {
+    width: 80%;
+    border: 1px solid grey;
+    font-family: "Montserrat";
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.avatar {
+    border-radius: 100%;
+    width: 14rem;
+}
+
+/*media query about*/
+@media screen and (max-width: 750px) {
+    .contentwrapper {
+        flex-direction: column;
+        padding: 1rem;
+        width: 90%;
+    }
+}
+
+/*language icons*/
+.languages {
+    display: flex;
+    gap: 1rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10000;
+}
+
+.languages img {
+    width: 1.5rem;
+    opacity: 70%;
+}
+
+.languages img:hover {
+    opacity: 100%;
+}
+
+/*stack*/
+
+.stackbox {
+    background-size: cover;
+    padding-top: 3rem;
+    background: linear-gradient(rgb(75, 67, 228),rgb(3, 70, 114), rgb(2, 91, 35),rgb(105, 93, 1), rgb(75, 67, 228));
+}
+
+.stackwrapper {
+    background-size: 100%;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.stacktitle {
+    width: 100vw;
+    margin-top: 5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.stackcontainer {
+    margin-top: 5rem;
+    padding: 0 2rem;
+    height: 60vh;
+    width: 100vw;
+    display: flex;
+    gap: 5rem;
+    z-index: 1000;
+}
+
+.stackcontainer div {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 13rem;
+    height: 13rem;
+}
+
+.stackcontainer div img {
+    width: 8rem;
+    height: 8rem;
+}
+
+/* media query stack */
+@media screen and (max-width: 750px) {
+
+.stackcontainer {
+    gap: 0.5rem;
+}
+
+.stackcontainer div {
+    height: 6rem;
+}
+.stackcontainer div img {
+    width: 4rem;
+    height: 4rem;
+}}
+

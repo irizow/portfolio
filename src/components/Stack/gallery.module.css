@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "style";
+    src: url('../../assets/fonts/StyleScript-Regular.ttf');
+}
+
+.container {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    
+}
+.header {
+    font-family: 'style', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 200%;
+    color: rgb(222, 192, 255);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carrousel {
+    width: 80%;
+    height: 80%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    gap: 0.5rem;
+}
+
+.index {
+    position: absolute;
+    bottom: 1rem;
+}
+.arrows {
+    position: absolute;
+    height: 15%;
+    width: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#prev {
+    left: 1rem;
+}
+
+#next {
+    right: 1rem;
+}
+
+.left {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.right {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+
+.boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out; 
+}
+
+@keyframes imgstranslate {
+    0% {
+        transform: translateX(0)
+    }
+    100% {
+        transform: translateX(-5%);
+    }
+}
+
+
+
+.bigbox {
+    position: relative;
+    width: 65%;
+    height: 85%;
+    box-shadow: 0px 2px 2px 3px rgba(0, 0, 0, 0.176);
+    border-radius: 20px;
+
+
+}
+
+.smallbox {
+    position: relative;
+    width: 55%;
+    height: 75%;
+}
+
+.bigbox img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    border-radius: 20px;
+}
+
+.smallbox img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    border-radius: 20px;
+}
+
+.boxes span {
+    color: white;
+    font-weight: bold;
+}

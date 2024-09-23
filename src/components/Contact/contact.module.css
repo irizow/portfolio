@@ -1,0 +1,53 @@
+.contactform {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    place-items: center;
+    background-color: rgb(192, 192, 255);
+    height: 100%;
+    border-bottom: 1px solid grey;
+}
+
+.contactform>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contactform h2 {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    float: right;
+}
+
+.contactform form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+}
+
+ .contactform input, .contactform textarea {
+    display: block;
+    background-color: rgb(227, 227, 227);
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+.contactform input {
+    height: 1.5rem;
+}
+
+.contactform button {
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    width: 150px;
+    align-self: center;
+    background-color: rgb(214, 161, 255);
+    color: black;
+}

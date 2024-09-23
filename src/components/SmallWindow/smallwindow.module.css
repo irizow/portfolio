@@ -23,7 +23,9 @@
         width: 100%;
         right: 0;
         top: 0;
-        height: 90%;
+        left: 0;
+        right: 0;
+        height: 100%;
     }
     
 }
@@ -32,27 +34,49 @@
 position: absolute;
 right: 10%;
 top: 20%;
- width: 50%;
- height: 60%;
+ width: 40rem;
+ height: 20rem;
  background-color: rgb(35, 35, 35);
  border: 2px solid grey;
- animation: windowPopUp 300ms ease-in
+ animation: windowPopUp 300ms ease-in;
+ display: flex;
+ flex-direction: column;
 }
 
 
 .bigwindow {
- position: absolute;
+ position: fixed;
  top: 0;
  left: 0;
+ bottom: 0;
+ right: 0;
  width: 100%;
- height: 90%;
+ height: 100%;
  background-color: black;
  border: 2px solid grey;
  box-sizing: border-box;
  animation: windowMaximize 200ms ease-in-out;
+ display: flex;
+ flex-direction: column;
+}
+
+@media screen and (max-width: 750px) {
+    .smallwindow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        border: 2px solid grey;
+        box-sizing: border-box;
+        animation: windowMaximize 200ms ease-in-out;
+    }
 }
 
 .windowheader {
+    cursor:grab;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -68,6 +92,7 @@ top: 20%;
 
 .iconscontainer img {
     width: 1.5rem;
+    cursor: pointer;
 }
 
 .wndbtn:hover {
@@ -75,5 +100,9 @@ top: 20%;
 }
 .closebtn:hover {
     filter: invert(30%) sepia(87%) saturate(5615%) hue-rotate(351deg) brightness(88%) contrast(135%);
+}
+
+.windowcontent {
+    height: 100%;
 }
 

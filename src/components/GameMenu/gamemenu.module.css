@@ -1,0 +1,101 @@
+@keyframes openmenu {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 18rem;
+    }
+    
+}
+
+@keyframes openbox {
+    from {
+        opacity: 0;
+    }
+
+    to {
+       opacity: 100;
+    }
+    
+}
+.gamemenu {
+    border: 1px solid rgb(226, 226, 226);
+    width: 15rem;
+    height: 20rem;
+    background-color: rgba(19, 19, 19, 0.53);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    bottom: 3rem;
+    left: 10.5rem;
+    animation: openmenu 500ms ease-in;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+
+    .gamecontainer {
+        padding: 0.5rem;
+    }
+
+    a, .span {
+        font-size: 9px;
+    }
+
+    
+}
+
+    
+a, .span {
+    font-size: 14px;
+}
+
+
+.gamecontainer {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    animation: openbox 600ms ease-in;
+
+}
+
+.gamecontainer img {
+    filter: invert(100%)
+}
+
+.dark div {
+    border-bottom: 2px solid rgba(239, 239, 239, 0.429);
+}
+
+.dark div:hover {
+    border-bottom: 2px solid white;
+}
+
+.light div {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.326);
+}
+
+.light div:hover {
+    border-bottom: 2px solid white;
+}
+
+
+.dark a {
+    color: white;
+}
+
+.dark a:hover {
+    color: white;
+}
+
+.light a {
+    color: black;
+}
+
+.light a:hover {
+    color: black;
+}
+

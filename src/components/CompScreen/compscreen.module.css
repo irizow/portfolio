@@ -17,6 +17,20 @@ html, body {
     box-sizing: border-box;
 }
 
+.footername {
+    position: absolute;
+    left: 47%;
+}
+
+@media screen and (max-width: 740px) {
+    .footername {
+        display: none;
+    }
+
+
+    
+}
+
 .iconbox {
     display: flex;
     gap: 1rem;
@@ -57,22 +71,25 @@ html, body {
 /*window*/
 
 .boxescontainer {
-    width: 23rem;
+    max-width: 23rem;
     height: 25rem;
     display: flex;
+    gap: 2rem;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
 .boxes {
-    width: 4rem;
-    height: 5rem;
+    width: 7rem;
+    height: 7rem;
+    padding: 1rem 1rem;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     align-items: center;
     text-align: center;
-    padding: 1rem;
     cursor: pointer;
+    border: 1px solid transparent;
 }
 
 .boxes:hover {
@@ -84,7 +101,29 @@ html, body {
     width: 3rem;
 }
 
+.boxes span{
+    font-size: 1rem;
+}
 .invert {
     filter: invert(100%)
+}
+
+@media screen and (max-width: 750px) {
+    .boxescontainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: center;
+        gap: 0;
+    }
+
+    .boxes {
+        background-color: rgba(242, 242, 242, 0.53);
+        border-radius: 10px;
+        gap: 0.2rem;
+        padding: 0.5rem;
+        width: 6rem;
+        height: 6rem;
+        justify-content: center;
+    }
 }
 
