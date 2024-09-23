@@ -36,7 +36,7 @@ export default function Gallery() {
             const newIndex = (index + 1) % galleryImgs.length;
             setIndex(newIndex);
             updateImages(newIndex);
-        }, 1000);
+        }, 5000);
 
         return () => clearInterval(interval)
     },[index])

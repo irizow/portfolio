@@ -3,22 +3,28 @@ import minimizeIcon from '../../assets/images/minimize.png'
 import maximizeIcon from '../../assets/images/maximize.png'
 import closeIcon from '../../assets/images/close.png'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useDragControls } from 'framer-motion'
 
 export default function SmallWindow({setIsSmllWndw, title, children}) {
     const [isMaximized, setIsMaximized] = useState(false);
+    
+
+
     return (
         <motion.div 
         className={ isMaximized ? styles.bigwindow :styles.smallwindow}
         drag
-        dragConstraints={isMaximized ? {
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-        } : {
+        style={isMaximized && {right: '0', top: '0'}}
+        
+        dragConstraints={isMaximized ?
+            {
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+            } :{
             top: -100,
-            left: -600,
+            left: -500,
             right: 100,
             bottom: 100,
         }}
