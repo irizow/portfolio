@@ -1,11 +1,8 @@
-html, body {
-    margin: 0;
-    padding: 0;
-}
+
 
 /* footer */
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 3rem;
