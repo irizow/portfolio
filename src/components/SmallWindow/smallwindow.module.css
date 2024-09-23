@@ -41,6 +41,7 @@ top: 20%;
  animation: windowPopUp 300ms ease-in;
  display: flex;
  flex-direction: column;
+ z-index: 100;
 }
 
 
@@ -58,6 +59,7 @@ top: 20%;
  animation: windowMaximize 200ms ease-in-out;
  display: flex;
  flex-direction: column;
+ z-index: 100;
 }
 
 @media screen and (max-width: 750px) {

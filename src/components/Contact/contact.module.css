@@ -51,3 +51,16 @@
     background-color: rgb(214, 161, 255);
     color: black;
 }
+
+@media screen and (max-width: 750px) {
+    .contactform {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .contactform textarea {
+        height: 20vh;
+    }
+}
