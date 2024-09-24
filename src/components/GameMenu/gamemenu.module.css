@@ -37,6 +37,10 @@
 
 @media screen and (max-width: 750px) {
 
+    .gamemenu {
+        left: 7rem;
+    }
+
     .gamecontainer {
         padding: 0.5rem;
     }
