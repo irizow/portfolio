@@ -39,7 +39,7 @@ export default function Gallery() {
         }, 5000);
 
         return () => clearInterval(interval)
-    },[index])
+    },[images])
 
 
     return (
@@ -48,15 +48,15 @@ export default function Gallery() {
             <div className={styles.carrousel}>
                 <div className={`${styles.boxes} ${styles.smallbox}`}>
                 <div className={styles.cover}></div>
-                <img src={images.prev.src} alt={images.prev.alt}></img>
+                <img loading='lazy' src={images.prev.src} alt={images.prev.alt}></img>
                 </div>
                 <div className={`${styles.boxes} ${styles.bigbox}`}>
                     <div className={styles.cover}></div>
-                    <img src={images.curr.src} alt={images.curr.alt}></img>
+                    <img loading='lazy' src={images.curr.src} alt={images.curr.alt}></img>
                 </div>
                 <div className={`${styles.boxes} ${styles.smallbox}`}>
                     <div className={styles.cover}></div>
-                    <img src={images.next.src} alt={images.next.alt}></img>
+                    <img loading='lazy' src={images.next.src} alt={images.next.alt}></img>
                 </div>
                 
             </div>

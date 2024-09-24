@@ -11,6 +11,7 @@ export default function ScreenFooter({darkTheme, setDarkTheme}) {
     const [time, setTime] = useState('');
     const [isGameMenu, setIsGameMenu] = useState(false);
     const gameRef = useRef();
+    const color = darkTheme ? 'white' : 'black';
 
     const handleClickOut = (e, ref) => {
         if(isGameMenu && !gameRef.current.contains(e.target)) {
@@ -39,8 +40,8 @@ export default function ScreenFooter({darkTheme, setDarkTheme}) {
         setDarkTheme(!darkTheme)
     }
     return (
-        <div className={styles.footer}>
-            <div className={styles.iconbox}>
+        <div className={styles.footer} style={{color}}>
+            <div className={styles.iconbox} >
                 <img src={darkTheme ? sunIcon : moonIcon} onClick={()=> {handleClick()}}></img>
                 
                 <a href="https://irizow.github.io/calculator-js/" target="_blank" rel="noopener noreferrer">

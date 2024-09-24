@@ -8,14 +8,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     text-align: center;
     padding: 1rem 4rem;
 }
 
 @media screen and (max-width: 750px) {
+    .container {
+        gap: 3rem;
+    }
+    .projboxes {
+
+        width: 7rem;
+        gap: 1rem;
+        padding: 1rem 4rem;
+    }
+
     .projboxes a {
         font-size: 20px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        place-items: center;
     }
 
     .projboxes img {

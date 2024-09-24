@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Montserrat";
-    src: url(../../assets/fonts/Montserrat-VariableFont_wght.ttf);
+    font-family: 'Montserrat';
+    src: url(../../assets/fonts/Montserrat-VariableFont_wght.ttf)
 }
 
 
@@ -14,6 +14,7 @@ html, body {
     overflow-x: hidden;
     background-color: black;
     position: relative;
+    font-family: 'Montserrat';
   }
 
 
@@ -95,15 +96,20 @@ html, body {
     position: relative;
 }
 
+.span1 {
+    color: rgb(231, 230, 230);
+}
+
 
 .span1, .span2 {
     font-size: 3rem;
+    font-family: 'Montserrat';
 }
 
 .span2 {
     color: #b062f8;
     white-space: pre;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .arrowdown {
@@ -172,11 +178,12 @@ html, body {
     .titlewrapper {
         height: 70%;
         width: 95%;
+        gap: 0.5rem;
         flex-direction: column;
     }
 
     .span1, .span2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -184,6 +191,7 @@ html, body {
 
 
 .description {
+    color: rgb(235, 235, 235);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,7 +214,7 @@ html, body {
 .contentwrapper {
     width: 80%;
     border: 1px solid grey;
-    font-family: "Montserrat";
+    font-family: "Montserrat", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     gap: 2rem;
     padding: 2rem;
@@ -251,6 +259,7 @@ html, body {
 /*stack*/
 
 .stackbox {
+    color: white;
     background-size: cover;
     padding-top: 3rem;
     background: linear-gradient(rgb(75, 67, 228),rgb(3, 70, 114), rgb(2, 91, 35),rgb(105, 93, 1), rgb(75, 67, 228));
@@ -262,6 +271,7 @@ html, body {
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow-x: hidden;
 }
 
 .stacktitle {
@@ -272,14 +282,27 @@ html, body {
     z-index: 1000;
 }
 
+@keyframes slide {
+    from {
+        left: 0;
+    }
+    to {
+        left: calc(-18rem * 14)
+        /*width of the whole element per number of stack icons*/
+    }
+    
+}
+
 .stackcontainer {
     margin-top: 5rem;
-    padding: 0 2rem;
+    padding: 0 5rem;
     height: 60vh;
-    width: 100vw;
+    width: auto;
     display: flex;
     gap: 5rem;
     z-index: 1000;
+    animation: slide 20s linear infinite;
+    position: relative;
 }
 
 .stackcontainer div {

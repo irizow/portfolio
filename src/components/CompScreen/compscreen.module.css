@@ -45,15 +45,18 @@
     height: 100vh;
     padding: 1rem;
     box-sizing: border-box;
+
 }
 
 .dark {
     background: linear-gradient( rgb(0, 0, 0), rgb(30, 0, 69));
+    color: white;
 }
 
 .dark a, .dark a:hover {
     color: white;
     font-weight: 400;
+    text-decoration: none;
 }
 
 .light {
@@ -64,6 +67,7 @@
 .light a, .light a:hover {
     color: black;
     font-weight: 400;
+    text-decoration: none;
 }
 
 /*window*/
@@ -75,6 +79,7 @@
     gap: 2rem;
     flex-direction: column;
     flex-wrap: wrap;
+
 }
 
 .boxes {
@@ -88,6 +93,7 @@
     text-align: center;
     cursor: pointer;
     border: 1px solid transparent;
+
 }
 
 .boxes:hover {
@@ -100,7 +106,7 @@
 }
 
 .boxes span{
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 .invert {
     filter: invert(100%)

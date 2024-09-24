@@ -14,6 +14,8 @@ export default function Stack() {
     return (
         <div className={styles.stackcontainer}>
             {stackImg}
+            {stackImg}
+
         </div>
     )
 }
