@@ -52,6 +52,11 @@
     color: black;
 }
 
+.loadingicon {
+    position: absolute;
+    grid-column: 1/3;
+}
+
 @media screen and (max-width: 750px) {
     .contactform {
         display: flex;

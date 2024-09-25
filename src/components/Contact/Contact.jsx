@@ -2,11 +2,13 @@ import styles from './contact.module.css'
 import { useState } from 'react';
 import emailjs from '@emailjs/browser'
 import mailGif from '../../assets/images/mailgif.gif'
+import loadingGif from '../../assets/images/loadingicon.svg'
 
 export default function Contact() {
     const templateId = import.meta.env.VITE_REACT_APP_TEMPLATE_ID;
     const serviceId = import.meta.env.VITE_REACT_APP_SERVICE_ID;
     const publicKey = import.meta.env.VITE_REACT_APP_PUBLIC_KEY;
+    const [isSending, setIsSending] = useState(false);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -26,10 +28,13 @@ export default function Contact() {
 
     const handleSubmit = (e)=> {
         e.preventDefault();
+        setIsSending(true);
         emailjs.sendForm(serviceId, templateId, e.target, publicKey)
         .then(()=> {
             console.log('email sent correctly');
+            setIsSending(false);
             setIsSubmitted(true)
+            
         }, (error) => {
             alert('Something went wrong when trying to contact me')
             console.log(error);
@@ -39,7 +44,9 @@ export default function Contact() {
 
     return (
         <div className={styles.contactform}>
-            {isSubmitted ? 
+            
+            {isSending ? <img className={styles.loadingicon} src={loadingGif} alt='loading icon gif'></img>
+             : isSubmitted ? 
             <>
             <div>
             <h3>Your mesage was sent!</h3>
