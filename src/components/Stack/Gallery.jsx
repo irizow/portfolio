@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 
 export default function Gallery() {
 
+
     const [index, setIndex] = useState(0);
     const [images, setImages] = useState({
         prev: galleryImgs[galleryImgs.length - 1],
@@ -31,15 +32,6 @@ export default function Gallery() {
         updateImages(newIndex);
     }
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const newIndex = (index + 1) % galleryImgs.length;
-            setIndex(newIndex);
-            updateImages(newIndex);
-        }, 5000);
-
-        return () => clearInterval(interval)
-    },[images])
 
 
     return (
@@ -47,15 +39,12 @@ export default function Gallery() {
             <div className={styles.header}>Photo Gallery</div>
             <div className={styles.carrousel}>
                 <div className={`${styles.boxes} ${styles.smallbox}`}>
-                <div className={styles.cover}></div>
                 <img loading='lazy' src={images.prev.src} alt={images.prev.alt}></img>
                 </div>
                 <div className={`${styles.boxes} ${styles.bigbox}`}>
-                    <div className={styles.cover}></div>
                     <img loading='lazy' src={images.curr.src} alt={images.curr.alt}></img>
                 </div>
                 <div className={`${styles.boxes} ${styles.smallbox}`}>
-                    <div className={styles.cover}></div>
                     <img loading='lazy' src={images.next.src} alt={images.next.alt}></img>
                 </div>
                 

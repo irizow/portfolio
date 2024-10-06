@@ -49,7 +49,7 @@
 }
 
 .dark {
-    background: linear-gradient( rgb(0, 0, 0), rgb(30, 0, 69));
+    background: url('../../assets/images/backgrounddm.svg');
     color: white;
 }
 
@@ -60,7 +60,9 @@
 }
 
 .light {
-    background: linear-gradient(rgb(198, 198, 198), white);
+    background: url('../../assets/images/backgroundlm.svg');
+    background-size: 100vw;
+    background-position: 50%;
     color: black;
 }
 
@@ -106,7 +108,7 @@
 }
 
 .boxes span{
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 .invert {
     filter: invert(100%)

@@ -45,7 +45,6 @@ export default function Projects() {
         <div className={styles.container}>
            {projects.map((project, index) =>
         <Project key={index} title={project.title} alt={project.alt} icon={project.icon} href={project.href} />)}
-            
         </div>
     )
 }

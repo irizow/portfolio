@@ -2,18 +2,39 @@ import styles from './smallwindow.module.css'
 import minimizeIcon from '../../assets/images/minimize.png'
 import maximizeIcon from '../../assets/images/maximize.png'
 import closeIcon from '../../assets/images/close.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useDragControls } from 'framer-motion'
 
 export default function SmallWindow({setIsSmllWndw, title, children}) {
     const [isMaximized, setIsMaximized] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    const handleResize = () => {
+        if(window.innerWidth < 750) {
+            setIsMobile(true)
+        }
+        else {
+            setIsMobile(false)
+        }
+    }
+
+    useEffect(()=> {
+        handleResize();
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+          };
+
+    }, [])
     
 
 
     return (
         <motion.div 
         className={ isMaximized ? styles.bigwindow :styles.smallwindow}
-        drag
+        drag={ isMobile ? false : true}
         style={isMaximized && {right: '0', top: '0'}}
         
         dragConstraints={isMaximized ?
