@@ -7,11 +7,14 @@ import calculatorIcon from '../../assets/images/calculator.png'
 import gameIcon from '../../assets/images/game.png'
 import GameMenu from "../GameMenu/GameMenu"
 
+
+
 export default function ScreenFooter({darkTheme, setDarkTheme}) {
     const [time, setTime] = useState('');
     const [isGameMenu, setIsGameMenu] = useState(false);
     const gameRef = useRef();
     const color = darkTheme ? 'white' : 'black';
+
 
     const handleClickOut = (e, ref) => {
         if(isGameMenu && !gameRef.current.contains(e.target)) {
