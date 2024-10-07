@@ -183,7 +183,7 @@ html, body {
     }
 
     .span1, .span2 {
-        font-size: 1.5rem;
+        font-size: 5.5vw;
     }
 }
 
@@ -301,7 +301,7 @@ html, body {
     display: flex;
     gap: 5rem;
     z-index: 1000;
-    animation: slide 20s linear infinite;
+    animation: slide 30s linear infinite;
     position: relative;
 }
 
@@ -324,6 +324,7 @@ html, body {
 
 .stackcontainer {
     gap: 0.5rem;
+    animation: slide 40s linear infinite;
 }
 
 .stackcontainer div {
@@ -332,5 +333,8 @@ html, body {
 .stackcontainer div img {
     width: 4rem;
     height: 4rem;
-}}
+}
+
+
+}
 
