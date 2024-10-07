@@ -4,6 +4,8 @@ import cvIcon from '../../assets/images/cvgen.png'
 import storeIcon from '../../assets/images/store.png'
 import terminalIcon from '../../assets/images/terminal.png'
 import limeLogo from '../../assets/images/limelogo.png'
+import KuboLogo from '../../assets/images/travelicon.png'
+import JRTLogo from '../../assets/images/caricon.png'
 
 export default function Projects() {
 
@@ -13,6 +15,18 @@ export default function Projects() {
         icon: weatherIcon,
         alt: 'Weather app icon',
         },
+        {title: 'Kubo Travels',
+        href: 'https://kubo-travels.vercel.app',
+        icon: KuboLogo,
+        alt: 'Travel website logo'
+        },
+        {title: 'JRT Motors',
+        href: 'https://jrtmotors.com',
+        icon: JRTLogo,
+        alt: 'Car dealership logo'
+
+        },
+
         {title: 'Vape Store',
         href: 'https://vape-store-delta.vercel.app/',
         icon: storeIcon,
