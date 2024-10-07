@@ -54,7 +54,7 @@ export default function Gallery() {
           setIndex(newIndex);
           updateImages(newIndex);
           setIsAnimating(false);
-        }, 300);
+        }, 500);
     
       
         return () => clearTimeout(timeoutId);
