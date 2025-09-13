@@ -6,7 +6,7 @@
     bottom: 0.4rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 40%;
+    width: fit-content;
     height: 3rem;
     background-color: rgb(251, 200, 255);
     border-radius: 10px;
@@ -15,15 +15,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 3rem;
     padding: 0 2rem;
     box-sizing: border-box;
     z-index: 1000;
 }
 
-.footername {
-    position: absolute;
-    left: 47%;
-}
 
 @media screen and (max-width: 740px) {
     .footername {

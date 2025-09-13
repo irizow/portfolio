@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './stickernotes.module.css'
 import { motion } from 'framer-motion';
 import { notescontent } from './notescontent';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface StickerNote {
         id: number;
@@ -12,11 +13,13 @@ interface StickerNote {
 export default function StickerNotes() {
     const [notes, setNotes] = useState<StickerNote[]>(notescontent);
     const colors = ['var(--pastel-yellow)', 'var(--pastel-pink)', 'var(--pastel-green)', 'var(--pastel-blue)'];
+    const isMobile = useIsMobile();
 
+    if (isMobile) return null; 
     
   const autoResize = (el: HTMLTextAreaElement) => {
-    el.style.height = 'auto'; // reset first
-    el.style.height = `${el.scrollHeight}px`; // grow to fit content
+    el.style.height = 'auto'; 
+    el.style.height = `${el.scrollHeight}px`; 
   };
 
     function handleDelete(id: number) { 
@@ -36,7 +39,7 @@ export default function StickerNotes() {
     return (
         <>
         {notes.map((note, index) => (
-                    <motion.div dragConstraints={{ top: 20, left: -1000, right: 20, bottom: 300 }} drag className={styles.sticker_note} style={{ backgroundColor: note.color, right: `${index + 1 * 2}rem`, top: `${index + 1 * 2}rem`}}>
+                    <motion.div dragConstraints={{ top: 20, left: -1000, right: 20, bottom: 400 }} drag className={styles.sticker_note} style={{ backgroundColor: note.color, right: `${index + 1 * 2}rem`, top: `${index + 1 * 2}rem`, zIndex: notes.length - index }} key={note.id}>
             <header>
                 <span onClick={handleAddNewNote}>+</span>
                 <span onClick={() => handleDelete(note.id)} style={{transform: 'rotate(45deg)'}}>+</span>

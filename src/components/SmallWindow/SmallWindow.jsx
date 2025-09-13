@@ -4,32 +4,12 @@ import maximizeIcon from '../../assets/images/maximize.png'
 import closeIcon from '../../assets/images/close.png'
 import { useEffect, useState } from 'react'
 import { motion, useDragControls } from 'framer-motion'
+import { useIsMobile } from '../../hooks/useIsMobile'
 
 export default function SmallWindow({setIsSmllWndw, title, children}) {
     const [isMaximized, setIsMaximized] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const isMobile = useIsMobile();
     const colors = ['var(--pastel-pink)', 'var(--pastel-yellow)', 'var(--pastel-green)', 'var(--pastel-blue)', 'var(--pastel-purple)']
-
-    const handleResize = () => {
-        if(window.innerWidth < 750) {
-            setIsMobile(true)
-        }
-        else {
-            setIsMobile(false)
-        }
-    }
-
-    useEffect(()=> {
-        handleResize();
-
-        window.addEventListener('resize', handleResize)
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-          };
-
-    }, [])
-    
 
 
     return (

@@ -1,23 +1,19 @@
-@font-face {
-    font-family: "style";
-    src: url('../../assets/fonts/StyleScript-Regular.ttf');
-}
 
 .container {
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 248);
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 100;
+    border-radius: var(--border-radius);
     
 }
 .header {
-    font-family: 'style', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 200%;
-    color: rgb(222, 192, 255);
+    color: gray;
     position: absolute;
     top: 0;
     width: 100%;
@@ -43,19 +39,19 @@
 }
 .arrows {
     position: absolute;
-    height: 15%;
-    width: 6%;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #prev {
-    left: 1rem;
+    left: 1.5rem;
 }
 
 #next {
-    right: 1rem;
+    right: 1.5rem;
 }
 
 .left {
@@ -91,13 +87,15 @@
     opacity: 0;
 }
 
-
+.boxes img {
+        border-radius: 10px;
+          
+}
 
 .bigbox {
     position: relative;
     width: 65%;
     height: 85%;
-    box-shadow: 0px 2px 2px 3px rgba(0, 0, 0, 0.176);
     border-radius: 20px;
 
 
@@ -115,7 +113,6 @@
     width: 100%;
     height: 100%;
     transform: scale(1);
-    border-radius: 20px;
     transition: opacity 0.3s ease-in-out; 
 }
 
@@ -123,7 +120,6 @@
     width: 100%;
     height: 100%;
     transform: scale(1);
-    border-radius: 20px;
     transition: opacity 0.5s ease-in-out; 
 }
 
