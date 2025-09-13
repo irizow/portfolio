@@ -10,15 +10,15 @@ export default function SmallWindow({setIsSmllWndw, title, children}) {
     const [isMaximized, setIsMaximized] = useState(false);
     const isMobile = useIsMobile();
     const colors = ['var(--pastel-pink)', 'var(--pastel-yellow)', 'var(--pastel-green)', 'var(--pastel-blue)', 'var(--pastel-purple)']
-
+    const bigWindow = isMaximized || isMobile;
 
     return (
         <motion.div 
-        className={`${ isMaximized ? styles.big :styles.small} ${styles.window}`}
+        className={`${ bigWindow ? styles.big : styles.small} ${styles.window}`}
         drag={ isMobile ? false : true}
-        style={isMaximized && {right: '0', top: '0'}}
+        style={bigWindow && {right: '0', top: '0'}}
         
-        dragConstraints={isMaximized ?
+        dragConstraints={bigWindow ?
             {
                 top: 0,
                 left: 0,
