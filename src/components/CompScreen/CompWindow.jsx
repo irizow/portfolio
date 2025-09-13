@@ -70,7 +70,7 @@ export default function CompWindow({darkTheme}) {
                 </a>
                 <div className={styles.boxes}>
                     <img src={emailImg} alt="Email icon" onClick={()=> {handleClick(<Contact/>)}}></img>
-                    <span>Email</span>
+                    <span>Contact</span>
                 </div>
             </div>
                 <StickerNotes />
