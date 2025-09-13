@@ -39,13 +39,13 @@ export default function StickerNotes() {
     return (
         <>
         {notes.map((note, index) => (
-                    <motion.div dragConstraints={{ top: 20, left: -1000, right: 20, bottom: 400 }} drag className={styles.sticker_note} style={{ backgroundColor: note.color, right: `${index + 1 * 2}rem`, top: `${index + 1 * 2}rem`, zIndex: notes.length - index }} key={note.id}>
+                    <motion.div dragConstraints={{ top: 20, left: -1000, right: 20, bottom: 400 }} drag className={styles.sticker_note} style={{ backgroundColor: note.color, right: `${index + 1 * 2}rem`, top: `${index + 1 * 2}rem`}} key={note.id}>
             <header>
                 <span onClick={handleAddNewNote}>+</span>
                 <span onClick={() => handleDelete(note.id)} style={{transform: 'rotate(45deg)'}}>+</span>
             </header>
             <div>
-                <textarea value={note.text} placeholder='Don´t forget about this...' onChange={(e) => {setNotes(notes.map(n => n.id === note.id ? { ...n, text: e.target.value } : n)); autoResize(e.target);}}></textarea>
+                <textarea value={note.text} placeholder='Don´t you dare to forget...' onChange={(e) => {setNotes(notes.map(n => n.id === note.id ? { ...n, text: e.target.value } : n)); autoResize(e.target);}}></textarea>
             </div>
         </motion.div>
         ))}
