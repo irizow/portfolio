@@ -3,10 +3,15 @@
 /* footer */
 .footer {
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    bottom: 0.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
     height: 3rem;
-    background-color: rgba(0, 0, 0, 0.21);
+    background-color: rgb(251, 200, 255);
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: var(--box-shadow);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,7 +65,7 @@
 }
 
 .light {
-    background: url('../../assets/images/backgroundlm.svg');
+    background-color: rgb(251, 246, 241);
     background-size: cover;
     background-position: 50%;
     color: black;

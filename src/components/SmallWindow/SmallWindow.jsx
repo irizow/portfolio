@@ -8,6 +8,7 @@ import { motion, useDragControls } from 'framer-motion'
 export default function SmallWindow({setIsSmllWndw, title, children}) {
     const [isMaximized, setIsMaximized] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const colors = ['var(--pastel-pink)', 'var(--pastel-yellow)', 'var(--pastel-green)', 'var(--pastel-blue)', 'var(--pastel-purple)']
 
     const handleResize = () => {
         if(window.innerWidth < 750) {
@@ -33,7 +34,7 @@ export default function SmallWindow({setIsSmllWndw, title, children}) {
 
     return (
         <motion.div 
-        className={ isMaximized ? styles.bigwindow :styles.smallwindow}
+        className={`${ isMaximized ? styles.big :styles.small} ${styles.window}`}
         drag={ isMobile ? false : true}
         style={isMaximized && {right: '0', top: '0'}}
         
@@ -51,7 +52,7 @@ export default function SmallWindow({setIsSmllWndw, title, children}) {
         }}
         dragElastic={0}
         >
-            <div className={styles.windowheader}>
+            <div className={styles.windowheader} style={{background: colors[Math.floor(Math.random() * colors.length)]}}>
                 <span>{title}</span>
                 <div className={styles.iconscontainer}>
                     <img className={styles.wndbtn} src={minimizeIcon} alt="minimize window icon"></img>

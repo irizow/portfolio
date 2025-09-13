@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Unifont';
+    src: url(../src/assets/fonts/gnu-unifont.otf)
+}
+:root {
+    --border-radius: 10px;
+    --box-shadow: 3px 3px 0px 0px black;
+    --footer-height: 3rem;
+    --pastel-green: #d7ffcb;
+    --pastel-pink: #ffd1fd;
+    --pastel-yellow: #fff0c4;
+    --pastel-blue: #AFCBFF;
+    --pastel-purple: #E2C6FF;
+    --pastel-orange: #FFD8B1;
+}
+
 body, html {
     height: 100%;
     padding: 0;

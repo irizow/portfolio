@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import styles from './compscreen.module.css'
-import folderImg from '../../assets/images/folder.png'
-import documentImg from '../../assets/images/documenticon.png'
-import galleryImg from '../../assets/images/gallery.png'
-import notesImg from '../../assets/images/notes.png'
+import folderImg from '../../assets/icons/folder-icon.webp'
+import documentImg from '../../assets/icons/document-icon.webp'
+import galleryImg from '../../assets/icons/gallery-icon.webp'
+import notesImg from '../../assets/icons/tasks-icon.webp'
 import githubImg from '../../assets/images/github.png'
-import emailImg from '../../assets/images/emailIcon.png'
+import emailImg from '../../assets/icons/envelope-icon.webp'
 import SmallWindow from '../SmallWindow/SmallWindow'
 import Stack from '../Stack/Gallery'
 import Projects from '../Projects/Projects'
 import Contact from '../Contact/Contact'
 import { Link } from 'react-router-dom'
 import cvPdf from '../../assets/IrisRossellCV.pdf'
+import { notescontent } from '../StickerNotes/notescontent'
+import StickerNotes from '../StickerNotes/StickerNotes'
 
 export default function CompWindow({darkTheme}) {
 
@@ -71,6 +73,7 @@ export default function CompWindow({darkTheme}) {
                     <span>Email</span>
                 </div>
             </div>
+                <StickerNotes />
         </div>
     )
 }

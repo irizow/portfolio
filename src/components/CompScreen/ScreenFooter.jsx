@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react"
 import styles from './compscreen.module.css'
-import moonIcon from '../../assets/images/moon.png'
-import sunIcon from '../../assets/images/sun.png'
+import moonIcon from '../../assets/icons/moon-icon.webp'
+import sunIcon from '../../assets/icons/sun-icon.webp'
 import messageIcon from '../../assets/images/message.png'
-import calculatorIcon from '../../assets/images/calculator.png'
-import gameIcon from '../../assets/images/game.png'
+import calculatorIcon from '../../assets/icons/calculator-icon.webp'
+import gameIcon from '../../assets/icons/controller-icon.webp'
 import GameMenu from "../GameMenu/GameMenu"
 
 
