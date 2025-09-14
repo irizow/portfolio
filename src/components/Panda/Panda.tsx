@@ -13,7 +13,7 @@ import {useIsMobile} from '../../hooks/useIsMobile.ts';
 
 export default function Panda() {
   const isMobile = useIsMobile();
-  const [isInMiddle, setIsInMiddle] = useState<boolean>(false);
+  const [isInMiddle, setIsInMiddle] = useState<boolean>(isMobile ? true :false);
   const [hasGreeted, setHasGreeted] = useState<boolean>(false);
   const [isTooltip, setIsTooltip] = useState<boolean>(false);
   const [tooltipOnScreen, setTooltipOnScreen] = useState<boolean>(false);
@@ -61,12 +61,12 @@ export default function Panda() {
 
       useEffect(() => {
         const timer = setTimeout(() => {
-          if (isInMiddle) {
+          if (isInMiddle ||isMobile) {
             setHasGreeted(true);
           }
         }, 3500);
         return () => clearTimeout(timer);
-    }, [isInMiddle])
+    }, [isInMiddle, isMobile])
 
     const shouldPandaBeNeutral = useMemo(() => {
   return stats.boredom > 50 || stats.energy < 50 || stats.hunger > 50;
