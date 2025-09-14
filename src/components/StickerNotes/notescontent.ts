@@ -1,3 +1,3 @@
 export const notescontent = [{
-    id: 1, text: '-Remember to add some cute sprite pet to feed and play', color: 'var(--pastel-yellow)'
+    id: 1, text: '-Change panda walking animation 4 crawiling instead', color: 'var(--pastel-yellow)'
 }]
