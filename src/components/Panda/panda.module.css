@@ -1,0 +1,45 @@
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast; 
+  cursor: pointer;
+}
+
+.panda_container {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    z-index: 1000;
+    background-color: red;
+}
+
+
+.panda_tooltip {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid black;
+    font-size: 0.9rem;
+    color: black;
+    position: fixed;
+    bottom: 8rem;
+    left: 50%;
+    gap: 0.5rem;
+}
+
+.panda_tooltip .button_row {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.panda_tooltip button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'unifont';
+    cursor: pointer;
+}

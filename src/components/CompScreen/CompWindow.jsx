@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom'
 import cvPdf from '../../assets/IrisRossellCV.pdf'
 import { notescontent } from '../StickerNotes/notescontent'
 import StickerNotes from '../StickerNotes/StickerNotes'
+import Panda from '../Panda/Panda.tsx'
 
 export default function CompWindow({darkTheme}) {
 
@@ -74,6 +75,7 @@ export default function CompWindow({darkTheme}) {
                 </div>
             </div>
                 <StickerNotes />
+                <Panda />
         </div>
     )
 }
