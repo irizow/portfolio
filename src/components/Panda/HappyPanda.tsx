@@ -3,8 +3,10 @@ import styles from './panda.module.css'
 import happyPanda from '../../assets/panda/panda-to-happy-sheet.png'
 import smilingPanda from '../../assets/panda/smiling-panda-sheet.png'
 import { useEffect, useState } from "react";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
-export default function HappyPanda() {   
+export default function HappyPanda() {  
+    const isMobile = useIsMobile(); 
     const frameWidth = 64; 
     const frameHeight = 64; 
      const screenMiddle = window.innerWidth / 2 - frameWidth/2;
@@ -30,7 +32,8 @@ export default function HappyPanda() {
         transition: "left 2s linear, top 2s linear", // smooth slide,
         transformOrigin: "top left",
       }}
-          onClick={() => { setIsVeryHappy(true)}}
+          onClick={() => { isMobile ? null : setIsVeryHappy(true)}}
+          onDoubleClick={() => { isMobile ? setIsVeryHappy(true) : null}}
     >
         <SpriteAnimator
             sprite={isVeryHappy ? happyPanda : smilingPanda}

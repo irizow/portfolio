@@ -9,8 +9,10 @@ import UnwellPanda from './UnwellPanda.tsx';
 import Tooltip from './Tooltip.tsx';
 import { Stats } from './types.ts';
 import ActionPanda from './ActionPanda.tsx';
+import {useIsMobile} from '../../hooks/useIsMobile.ts';
 
 export default function Panda() {
+  const isMobile = useIsMobile();
   const [isInMiddle, setIsInMiddle] = useState<boolean>(false);
   const [hasGreeted, setHasGreeted] = useState<boolean>(false);
   const [isTooltip, setIsTooltip] = useState<boolean>(false);
@@ -58,11 +60,13 @@ export default function Panda() {
 
 
       useEffect(() => {
-        const timer = setTimeout(() => {    
+        const timer = setTimeout(() => {
+          if (isInMiddle) {
             setHasGreeted(true);
+          }
         }, 3500);
         return () => clearTimeout(timer);
-    }, [])
+    }, [isInMiddle])
 
     const shouldPandaBeNeutral = useMemo(() => {
   return stats.boredom > 50 || stats.energy < 50 || stats.hunger > 50;
@@ -72,8 +76,8 @@ export default function Panda() {
 }, [stats]);
     
     return (
-      <div className={styles.panda_container} onMouseEnter={() => setIsTooltip(true)} onMouseLeave={() => setIsTooltip(false)}>
-      {!isInMiddle ?
+      <div className={styles.panda_container} onClick={() => isMobile ? setIsTooltip(true) : null} onMouseEnter={() => isMobile ? null : setIsTooltip(true)} onMouseLeave={() => setIsTooltip(false)}>
+      {(!isInMiddle && !isMobile) ?
         <WalkingPanda setIsInMiddle={setIsInMiddle} />
         :
         !hasGreeted ?
