@@ -1,5 +1,5 @@
 export interface Stats {
-    hunger: number;
-    energy: number;
-    boredom: number;
+  hunger: number;
+  energy: number;
+  boredom: number;
 }

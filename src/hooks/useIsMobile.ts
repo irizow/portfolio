@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useIsMobile(breakpoint: number = 750) {
   const [isMobile, setIsMobile] = useState(false);
@@ -9,9 +9,9 @@ export function useIsMobile(breakpoint: number = 750) {
     };
 
     handleResize(); // run on mount
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [breakpoint]);
 
   return isMobile;
