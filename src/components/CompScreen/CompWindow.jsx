@@ -6,7 +6,9 @@ import galleryImg from "../../assets/icons/gallery-icon.webp";
 import notesImg from "../../assets/icons/tasks-icon.webp";
 import githubImg from "../../assets/images/github.png";
 import emailImg from "../../assets/icons/envelope-icon.webp";
+import controllerIcon from "../../assets/icons/controller-icon.webp";
 import SmallWindow from "../SmallWindow/SmallWindow";
+import Game from "../Game/Game";
 import Gallery from "../Gallery/Gallery";
 import Projects from "../Projects/Projects";
 import Contact from "../Contact/Contact";
@@ -19,6 +21,7 @@ import Panda from "../Panda/Panda.tsx";
 export default function CompWindow({ darkTheme }) {
   const [isSmllWndw, setIsSmllWndw] = useState(false);
   const [component, setComponent] = useState(null);
+  const [requiresBigScreen, setRequiresBigScreen] = useState(false);
 
   function handleClick(element) {
     setComponent(element);
@@ -36,14 +39,14 @@ export default function CompWindow({ darkTheme }) {
 
   return (
     <div
-      className={
-        darkTheme
-          ? `${styles.window} ${styles.dark}`
-          : `${styles.window} ${styles.light}`
-      }
+      className={`${styles.window} ${darkTheme ? styles.dark : styles.light}`}
     >
       {isSmllWndw && (
-        <SmallWindow setIsSmllWndw={setIsSmllWndw} children={component} />
+        <SmallWindow
+          setIsSmllWndw={setIsSmllWndw}
+          isMaximized={requiresBigScreen}
+          children={component}
+        />
       )}
       <div className={styles.boxescontainer}>
         <div className={styles.boxes}>
@@ -109,6 +112,17 @@ export default function CompWindow({ darkTheme }) {
             }}
           ></img>
           <span>Contact</span>
+        </div>
+        <div className={styles.boxes}>
+          <img
+            src={controllerIcon}
+            alt="Controller icon"
+            onClick={() => {
+              handleClick(<Game />);
+              setRequiresBigScreen(true);
+            }}
+          ></img>
+          <span>MyLife</span>
         </div>
       </div>
       <StickerNotes />
