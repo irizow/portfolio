@@ -5,10 +5,10 @@ import documentImg from "../../assets/icons/document-icon.webp";
 import galleryImg from "../../assets/icons/gallery-icon.webp";
 import notesImg from "../../assets/icons/tasks-icon.webp";
 import githubImg from "../../assets/images/github.png";
-import emailImg from "../../assets/icons/envelope-icon.webp";
-import controllerIcon from "../../assets/icons/controller-icon.webp";
+import emailImg from "../../assets/icons/envelope-icon.webp"; 
+import controllerIcon from "../../assets/icons/controller-icon.webp"
 import SmallWindow from "../SmallWindow/SmallWindow";
-import Game from "../Game/Game";
+import Game from '../Game/Game'
 import Gallery from "../Gallery/Gallery";
 import Projects from "../Projects/Projects";
 import Contact from "../Contact/Contact";
@@ -39,14 +39,11 @@ export default function CompWindow({ darkTheme }) {
 
   return (
     <div
-      className={`${styles.window} ${darkTheme ? styles.dark : styles.light}`}
+      className={`${styles.window} ${darkTheme ? styles.dark : styles.light}`
+      }
     >
       {isSmllWndw && (
-        <SmallWindow
-          setIsSmllWndw={setIsSmllWndw}
-          isMaximized={requiresBigScreen}
-          children={component}
-        />
+        <SmallWindow setIsSmllWndw={setIsSmllWndw} isMaximized={requiresBigScreen} children={component} />
       )}
       <div className={styles.boxescontainer}>
         <div className={styles.boxes}>
@@ -113,13 +110,13 @@ export default function CompWindow({ darkTheme }) {
           ></img>
           <span>Contact</span>
         </div>
-        <div className={styles.boxes}>
+               <div className={styles.boxes}>
           <img
             src={controllerIcon}
             alt="Controller icon"
             onClick={() => {
               handleClick(<Game />);
-              setRequiresBigScreen(true);
+              setRequiresBigScreen(true)
             }}
           ></img>
           <span>MyLife</span>
