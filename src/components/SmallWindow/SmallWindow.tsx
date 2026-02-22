@@ -2,11 +2,22 @@ import styles from "./smallwindow.module.css";
 import minimizeIcon from "../../assets/images/minimize.png";
 import maximizeIcon from "../../assets/images/maximize.png";
 import closeIcon from "../../assets/images/close.png";
-import { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { motion, useDragControls } from "framer-motion";
 import { useIsMobile } from "../../hooks/useIsMobile";
+import { DesktopProject } from "../data/DesktopProjects";
 
-export default function SmallWindow({ setActiveProject, children }) {
+interface SmallWindowProps {
+  setActiveProject: React.Dispatch<SetStateAction<DesktopProject | null>>;
+  children: React.ReactNode;
+  projectIsGame: boolean;
+}
+
+export default function SmallWindow({
+  setActiveProject,
+  children,
+  projectIsGame = false,
+}: SmallWindowProps) {
   const [isMaximized, setIsMaximized] = useState(false);
   const isMobile = useIsMobile();
   const colors = [
@@ -20,9 +31,15 @@ export default function SmallWindow({ setActiveProject, children }) {
 
   return (
     <motion.div
-      className={`${bigWindow ? styles.big : styles.small} ${styles.window}`}
+      className={`${bigWindow ? styles.big : styles.small} ${projectIsGame ? "game" : ""} ${styles.window}`}
       drag={isMobile ? false : true}
-      style={bigWindow && { right: "0", top: "0" }}
+      style={
+        bigWindow
+          ? { right: "0", top: "0" }
+          : projectIsGame
+            ? { width: "fit-content", height: "fit-content", scale: "0.8" }
+            : {}
+      }
       dragConstraints={
         bigWindow
           ? {

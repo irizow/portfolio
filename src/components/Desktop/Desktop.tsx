@@ -10,6 +10,7 @@ import TaskBar from "../TaskBar/TaskBar.tsx";
 import { DesktopProject, DesktopProjects } from "../data/DesktopProjects.ts";
 import cvPdf from "../../assets/IrisRossellCV.pdf";
 import SmallWindow from "../SmallWindow/SmallWindow.jsx";
+import Game from "../Game/Game.tsx";
 
 interface DesktopProps {
   darkTheme: boolean;
@@ -41,7 +42,10 @@ export default function Desktop({ darkTheme, setDarkTheme }: DesktopProps) {
       className={`${styles.window} ${darkTheme ? styles.dark : styles.light}`}
     >
       {activeProject && (
-        <SmallWindow setActiveProject={setActiveProject}>
+        <SmallWindow
+          setActiveProject={setActiveProject}
+          projectIsGame={activeProject.title === "Pkmn"}
+        >
           <activeProject.component {...activeProject.props} />
         </SmallWindow>
       )}

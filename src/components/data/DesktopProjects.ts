@@ -31,7 +31,7 @@ export const DesktopProjects: DesktopProject<any>[] = [
   {
     img: controllerIcon,
     alt: "Game controller icon",
-    title: "MyLife",
+    title: "Pkmn",
     component: Game,
   },
   {

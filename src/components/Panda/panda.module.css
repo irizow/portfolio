@@ -10,7 +10,7 @@
     cursor: pointer;
     position: absolute;
     bottom: 0;
-    z-index: 1000;
+    z-index: 10;
     background-color: red;
 }
 

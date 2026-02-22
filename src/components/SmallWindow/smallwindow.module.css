@@ -44,9 +44,8 @@ position: absolute;
  flex-direction: column;
  z-index: 100;
  right: 10%;
- top: 20%;
+ top: 5%;
 }
-
 
 .window.big {
  position: fixed;
