@@ -12,9 +12,6 @@ import { useIsMobile } from "../../hooks/useIsMobile.ts";
 
 export default function Panda() {
   const isMobile = useIsMobile();
-  const [isInMiddle, setIsInMiddle] = useState<boolean>(
-    isMobile ? true : false,
-  );
   const [hasGreeted, setHasGreeted] = useState<boolean>(false);
   const [isTooltip, setIsTooltip] = useState<boolean>(false);
   const [tooltipOnScreen, setTooltipOnScreen] = useState<boolean>(false);
@@ -47,8 +44,6 @@ export default function Panda() {
           energy: Math.max(prev.energy - 0.5, 0),
           boredom: Math.min(prev.boredom + 0.3, 100),
         };
-        console.log("stats", next);
-        console.log("styles", styles);
         return next;
       });
     }, 2000);
@@ -58,12 +53,10 @@ export default function Panda() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (isInMiddle || isMobile) {
-        setHasGreeted(true);
-      }
+      setHasGreeted(true);
     }, 3500);
     return () => clearTimeout(timer);
-  }, [isInMiddle, isMobile]);
+  }, []);
 
   const shouldPandaBeNeutral = useMemo(() => {
     return stats.boredom > 50 || stats.energy < 50 || stats.hunger > 50;
@@ -79,9 +72,7 @@ export default function Panda() {
       onMouseEnter={() => (isMobile ? null : setIsTooltip(true))}
       onMouseLeave={() => setIsTooltip(false)}
     >
-      {!isInMiddle && !isMobile ? (
-        <WalkingPanda setIsInMiddle={setIsInMiddle} />
-      ) : !hasGreeted ? (
+      {!hasGreeted ? (
         <GreetingPanda />
       ) : pandaInAction ? (
         <ActionPanda

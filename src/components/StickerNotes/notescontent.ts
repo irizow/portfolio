@@ -1,7 +1,7 @@
 export const notescontent = [
   {
     id: 1,
-    text: "-Change panda walking animation 4 crawiling instead",
+    text: "-Redo walking panda animation",
     color: "var(--pastel-yellow)",
   },
 ];
