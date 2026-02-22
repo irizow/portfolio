@@ -1,20 +1,35 @@
-import { useEffect, useState, useRef } from "react";
-import styles from "./compscreen.module.css";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  SetStateAction,
+  HTMLAttributeReferrerPolicy,
+} from "react";
+import styles from "./taskbar.module.css";
 import moonIcon from "../../assets/icons/moon-icon.webp";
 import sunIcon from "../../assets/icons/sun-icon.webp";
 import messageIcon from "../../assets/images/message.png";
 import calculatorIcon from "../../assets/icons/calculator-icon.webp";
 import gameIcon from "../../assets/icons/controller-icon.webp";
-import GameMenu from "../GameMenu/GameMenu";
+import GameMenu from "../GameMenu/GameMenu.jsx";
 
-export default function ScreenFooter({ darkTheme, setDarkTheme }) {
+interface TaskBarProps {
+  darkTheme: boolean;
+  setDarkTheme: React.Dispatch<SetStateAction<boolean>>;
+}
+
+export default function TaskBar({ darkTheme, setDarkTheme }: TaskBarProps) {
   const [time, setTime] = useState("");
   const [isGameMenu, setIsGameMenu] = useState(false);
-  const gameRef = useRef();
+  const gameRef = useRef<HTMLImageElement | null>(null);
   const color = darkTheme ? "white" : "black";
 
-  const handleClickOut = (e, ref) => {
-    if (isGameMenu && !gameRef.current.contains(e.target)) {
+  const handleClickOut = (e: MouseEvent) => {
+    if (
+      isGameMenu &&
+      gameRef.current &&
+      !gameRef.current.contains(e.target as Node)
+    ) {
       setIsGameMenu(false);
     }
   };
@@ -39,7 +54,7 @@ export default function ScreenFooter({ darkTheme, setDarkTheme }) {
     setDarkTheme(!darkTheme);
   };
   return (
-    <div className={styles.footer} style={{ color }}>
+    <div className={styles.taskbar} style={{ color }}>
       <div className={styles.iconbox}>
         <img
           src={darkTheme ? sunIcon : moonIcon}
@@ -64,9 +79,9 @@ export default function ScreenFooter({ darkTheme, setDarkTheme }) {
           }}
         ></img>
       </div>
-      <p className={styles.footername}>Iris Rossell</p>
+      <p className={styles.taskbarname}>Iris Rossell</p>
       <p>{time}</p>
-      {isGameMenu && <GameMenu darktheme={darkTheme} />}
+      {isGameMenu && <GameMenu darkTheme={darkTheme} />}
     </div>
   );
 }

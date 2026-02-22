@@ -1,4 +1,4 @@
-import CompScreen from "./components/CompScreen/CompScreen";
+import Desktop from "./components/Desktop/Desktop";
 import { useState } from "react";
 import "./App.css";
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <CompScreen darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+      <Desktop darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
     </>
   );
 }

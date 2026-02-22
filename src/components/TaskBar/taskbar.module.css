@@ -1,0 +1,45 @@
+
+.taskbar {
+    position: fixed;
+    bottom: 0.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    height: 3rem;
+    background-color: rgb(251, 200, 255);
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.taskbar img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+
+.iconbox {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+
+@media screen and (max-width: 740px) {
+    .taskbarname {
+        display: none;
+    }
+
+
+    
+}

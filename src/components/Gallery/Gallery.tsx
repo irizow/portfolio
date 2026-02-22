@@ -11,6 +11,7 @@ interface GalleryProps {
   }[];
 }
 export default function Gallery({ images }: GalleryProps) {
+  console.log("gallery imgs", images);
   const [index, setIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 

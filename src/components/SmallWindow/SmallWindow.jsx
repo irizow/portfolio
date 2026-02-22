@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { motion, useDragControls } from "framer-motion";
 import { useIsMobile } from "../../hooks/useIsMobile";
 
-export default function SmallWindow({ setIsSmllWndw, title, children }) {
+export default function SmallWindow({ setActiveProject, children }) {
   const [isMaximized, setIsMaximized] = useState(false);
   const isMobile = useIsMobile();
   const colors = [
@@ -46,7 +46,6 @@ export default function SmallWindow({ setIsSmllWndw, title, children }) {
           background: colors[Math.floor(Math.random() * colors.length)],
         }}
       >
-        <span>{title}</span>
         <div className={styles.iconscontainer}>
           <img
             className={styles.wndbtn}
@@ -66,7 +65,7 @@ export default function SmallWindow({ setIsSmllWndw, title, children }) {
             src={closeIcon}
             alt="close window icon"
             onClick={() => {
-              setIsSmllWndw(false);
+              setActiveProject(null);
             }}
           ></img>
         </div>
