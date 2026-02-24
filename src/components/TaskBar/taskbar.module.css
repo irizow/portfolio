@@ -40,6 +40,10 @@
         display: none;
     }
 
+    .taskbar {
+        z-index: 0;
+    }
+
 
     
 }
