@@ -43,7 +43,7 @@ export const ToDo = () => {
         priority: currTodo.priority,
       },
     ]);
-    setCurrTodo({...currTodo, todo: ''})
+    setCurrTodo({ ...currTodo, todo: "" });
   };
 
   const handleDelete = (id: string) => {
@@ -69,26 +69,28 @@ export const ToDo = () => {
     <section className={styles.tasks}>
       <h3>My ToDo's</h3>
       <div className={styles.todoinput}>
-          <input
-            placeholder="What's on you plate?"
-            onChange={(e) => setCurrTodo({ ...currTodo, todo: e.target.value })}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') ? handleAdd() : null}
-            value={currTodo.todo}
-            type="text"
-          ></input>
-          <select
-          id='priority'
-            onChange={(e) =>
-              setCurrTodo((todo) => ({
-                ...todo,
-                priority: e.target.value as Priority,
-              }))
-            }
-          >
-            {PRIORITIES.map((priority) => (
-              <option value={priority}>{priority}</option>
-            ))}
-          </select>
+        <input
+          placeholder="What's on you plate?"
+          onChange={(e) => setCurrTodo({ ...currTodo, todo: e.target.value })}
+          onKeyDown={(e) =>
+            e.key === "Enter" || e.key === " " ? handleAdd() : null
+          }
+          value={currTodo.todo}
+          type="text"
+        ></input>
+        <select
+          id="priority"
+          onChange={(e) =>
+            setCurrTodo((todo) => ({
+              ...todo,
+              priority: e.target.value as Priority,
+            }))
+          }
+        >
+          {PRIORITIES.map((priority) => (
+            <option value={priority}>{priority}</option>
+          ))}
+        </select>
         {error && <span className={styles.error}>{error}</span>}
         <button onClick={handleAdd}>Add Todo</button>
       </div>

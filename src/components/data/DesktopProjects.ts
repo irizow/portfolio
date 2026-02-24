@@ -12,7 +12,7 @@ import { galleryImgs as images } from "../../assets/gallery/gallery.ts";
 import React from "react";
 import { ToDo } from "../ToDo/ToDo.tsx";
 
-export interface DesktopProject<P = any> {
+export interface Project<P = any> {
   img: string;
   alt: string;
   title: string;
@@ -22,7 +22,7 @@ export interface DesktopProject<P = any> {
 
 console.log("fold inages", images);
 
-export const DesktopProjects: DesktopProject<any>[] = [
+export const DesktopProjects: Project<any>[] = [
   {
     img: folderImg,
     alt: "Folder image",

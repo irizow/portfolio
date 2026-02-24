@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 import StickerNotes from "../StickerNotes/StickerNotes.tsx";
 import Panda from "../Panda/Panda.tsx";
 import TaskBar from "../TaskBar/TaskBar.tsx";
-import { DesktopProject, DesktopProjects } from "../data/DesktopProjects.ts";
+import { DesktopProjects, Project } from "../data/DesktopProjects.ts";
 import cvPdf from "../../assets/IrisRossellCV.pdf";
 import SmallWindow from "../SmallWindow/SmallWindow.jsx";
 import Game from "../Game/Game.tsx";
+import { Login } from "../Login/Login.tsx";
 
 interface DesktopProps {
   darkTheme: boolean;
@@ -18,14 +19,11 @@ interface DesktopProps {
 }
 
 export default function Desktop({ darkTheme, setDarkTheme }: DesktopProps) {
-  const [isSmllWndw, setIsSmllWndw] = useState(false);
-  const [activeProject, setActiveProject] =
-    useState<DesktopProject<any> | null>(null);
-  const [requiresBigScreen, setRequiresBigScreen] = useState(false);
+  const [activeProject, setActiveProject] = useState<Project<any> | null>(null);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
-  function handleClick(project: DesktopProject) {
+  function handleClick(project: Project) {
     setActiveProject(project);
-    setIsSmllWndw(true);
   }
 
   const onDownloadClick = () => {
@@ -87,7 +85,16 @@ export default function Desktop({ darkTheme, setDarkTheme }: DesktopProps) {
       </div>
       <StickerNotes />
       <Panda />
-      <TaskBar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+      {isLogin && (
+        <SmallWindow setActiveProject={setIsLogin} projectIsGame={false}>
+          {<Login />}
+        </SmallWindow>
+      )}
+      <TaskBar
+        setIsLogin={setIsLogin}
+        darkTheme={darkTheme}
+        setDarkTheme={setDarkTheme}
+      />
     </div>
   );
 }

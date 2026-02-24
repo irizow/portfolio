@@ -12,17 +12,25 @@ import messageIcon from "../../assets/images/message.png";
 import calculatorIcon from "../../assets/icons/calculator-icon.webp";
 import gameIcon from "../../assets/icons/controller-icon.webp";
 import GameMenu from "../GameMenu/GameMenu.jsx";
+import userIcon from "../../assets/icons/user.png";
+import { auth } from "../../firebase";
 
 interface TaskBarProps {
+  setIsLogin: React.Dispatch<SetStateAction<boolean>>;
   darkTheme: boolean;
   setDarkTheme: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export default function TaskBar({ darkTheme, setDarkTheme }: TaskBarProps) {
+export default function TaskBar({
+  setIsLogin,
+  darkTheme,
+  setDarkTheme,
+}: TaskBarProps) {
   const [time, setTime] = useState("");
   const [isGameMenu, setIsGameMenu] = useState(false);
   const gameRef = useRef<HTMLImageElement | null>(null);
   const color = darkTheme ? "white" : "black";
+  const user = auth.currentUser;
 
   const handleClickOut = (e: MouseEvent) => {
     if (
@@ -57,6 +65,11 @@ export default function TaskBar({ darkTheme, setDarkTheme }: TaskBarProps) {
     <div className={styles.taskbar} style={{ color }}>
       <div className={styles.iconbox}>
         <img
+          onClick={() => setIsLogin(true)}
+          src={userIcon}
+          alt="user icon"
+        ></img>
+        <img
           src={darkTheme ? sunIcon : moonIcon}
           onClick={() => {
             handleClick();
@@ -79,7 +92,9 @@ export default function TaskBar({ darkTheme, setDarkTheme }: TaskBarProps) {
           }}
         ></img>
       </div>
-      <p className={styles.taskbarname}>Iris Rossell</p>
+      <p className={styles.taskbarname}>
+        {user?.displayName ? `${user.displayName} x Iris` : "Iris Rossell"}
+      </p>
       <p>{time}</p>
       {isGameMenu && <GameMenu darkTheme={darkTheme} />}
     </div>
