@@ -69,14 +69,20 @@
     text-decoration: line-through;
 }
 
-.todorow.high {
-    color: red;
+.todorow .status_marker {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 100px;
 }
-.todorow.medium {
-    color: orange;
+
+.todorow.high .status_marker {
+    background-color: red;
 }
-.todorow.low {
-    color: green;
+.todorow.medium .status_marker {
+    background-color: orange;
+}
+.todorow.low .status_marker {
+    background-color: green;
 }
 
 /* todo inputs*/
@@ -116,4 +122,28 @@
 .error {
     color: rgb(255, 142, 142);
     font-size: 0.8rem;
+}
+
+@media screen and (max-width: 750px) {
+    .tasks {
+        font-size: 1.2rem;
+    }
+    .todoinput {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .todoinput input {
+        grid-column: 1/3;
+        font-size: 1.2rem;
+    }
+    .todoinput select {
+        grid-row: 2/3;
+        grid-column: 1/2;
+             font-size: 1.2rem;
+    }
+    .todoinput button {
+                grid-row: 2/3;
+        grid-column: 2/3;
+             font-size: 1.2rem;
+    }
 }

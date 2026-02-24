@@ -34,7 +34,6 @@ export const ToDo = () => {
     if (!currTodo.todo)
       return setError("Ooops, looks like you tried to add an empty task");
     const id = uuidv1();
-    console.log("about to add a todo with theid", id);
     setTodos((prev) => [
       ...prev,
       {
@@ -44,6 +43,7 @@ export const ToDo = () => {
         priority: currTodo.priority,
       },
     ]);
+    setCurrTodo({...currTodo, todo: ''})
   };
 
   const handleDelete = (id: string) => {
@@ -69,16 +69,15 @@ export const ToDo = () => {
     <section className={styles.tasks}>
       <h3>My ToDo's</h3>
       <div className={styles.todoinput}>
-        <label>
           <input
             placeholder="What's on you plate?"
             onChange={(e) => setCurrTodo({ ...currTodo, todo: e.target.value })}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') ? handleAdd() : null}
             value={currTodo.todo}
             type="text"
           ></input>
-        </label>
-        <label>
           <select
+          id='priority'
             onChange={(e) =>
               setCurrTodo((todo) => ({
                 ...todo,
@@ -90,7 +89,6 @@ export const ToDo = () => {
               <option value={priority}>{priority}</option>
             ))}
           </select>
-        </label>
         {error && <span className={styles.error}>{error}</span>}
         <button onClick={handleAdd}>Add Todo</button>
       </div>
@@ -128,6 +126,7 @@ const TodoRow = ({
       >
         {todo.status === "done" && "x"}
       </button>{" "}
+      <div className={styles.status_marker}></div>
       <p>{todo.todo}</p>
       <button
         className={styles.delete_button}
@@ -142,8 +141,8 @@ const TodoRow = ({
 const ProgressBar = ({ percentage }: { percentage: number }) => {
   const color =
     percentage <= 33 ? "red" : percentage < +66 ? "yellow" : "green";
-  const radius = 30;
-  const stroke = 8;
+  const radius = 25;
+  const stroke = 6;
   const normalizedRadius = radius - stroke / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
 
@@ -164,10 +163,10 @@ const ProgressBar = ({ percentage }: { percentage: number }) => {
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        fontSize="20"
+        fontSize="16"
         fontWeight="bold"
       >
-        {percentage}%
+        {Math.round(percentage)}%
       </text>
       <circle
         stroke={color}
