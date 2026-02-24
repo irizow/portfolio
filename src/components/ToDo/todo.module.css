@@ -1,30 +1,69 @@
+/*main*/
 .tasks {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 0.5rem;
     height: 100%;
+    overflow-y: scroll;
+    height: 90%;
+    scrollbar-width: thin;
+}
+
+.tasks h3 {
+    margin: 0 0 1rem 0;
 }
 
 .todolist {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 1rem;
 }
 
+/*todo list rows*/
 .todorow {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    border: 1px solid rgba(128, 128, 128, 0.415);
+    border-radius: 20px;
+    transition: box-shadow 400ms ease-in-out;
 }
 
-.todorow button:first-of-type {
+.todorow:hover {
+    box-shadow: 0px 3px 2px rgba(132, 132, 132, 0.378);
+}
+
+.todorow  .status_button {
     border-radius: 100%;
+    border: 1px solid gray;
     width: 1.5rem;
     height: 1.5rem;
     display: grid;
     place-items: center;
+    margin-left: 1rem;
 }
+
+.todorow  .delete_button {
+    opacity: 0;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 2rem;
+    transition: opacity 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.todorow .delete_button img {
+    width: 1.2rem;
+}
+
+.todorow:hover .delete_button {
+    opacity: 1;
+}
+
 
 .todorow.done p {
     text-decoration: line-through;
@@ -40,14 +79,17 @@
     color: green;
 }
 
-
+/* todo inputs*/
 .todoinput {
      display: flex;
      justify-content: space-between;
+     display: grid;
+     grid-template-columns: 3fr 1fr 1fr;
+     gap: 0.5rem;
 }
 
 .todoinput input, .todoinput select, .todoinput button {
-
+    width: 100%;
     border-radius: 20px;
     border: 1px solid gray;
     padding: 0.4rem;
@@ -55,5 +97,23 @@
 }
 
 .todoinput input {
-    width: min(15rem, 60vw);
+    width: 100%;
+}
+
+.todoinput button {
+    width: 5rem;
+}
+
+
+/* percentage marker */
+.progress_bar {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;  
+}
+
+/*error*/
+.error {
+    color: rgb(255, 142, 142);
+    font-size: 0.8rem;
 }
