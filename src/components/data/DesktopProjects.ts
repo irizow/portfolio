@@ -1,7 +1,7 @@
 import folderImg from "../../assets/icons/folder-icon.webp";
 
 import galleryImg from "../../assets/icons/gallery-icon.webp";
-
+import tasksImg from "../../assets/icons/tasks-icon.webp";
 import emailImg from "../../assets/icons/envelope-icon.webp";
 import controllerIcon from "../../assets/icons/controller-icon.webp";
 import Game from "../Game/Game.tsx";
@@ -10,6 +10,7 @@ import Projects from "../Projects/Projects.jsx";
 import Contact from "../Contact/Contact.jsx";
 import { galleryImgs as images } from "../../assets/gallery/gallery.ts";
 import React from "react";
+import { ToDo } from "../ToDo/ToDo.tsx";
 
 export interface DesktopProject<P = any> {
   img: string;
@@ -27,6 +28,12 @@ export const DesktopProjects: DesktopProject<any>[] = [
     alt: "Folder image",
     title: "Projects",
     component: Projects,
+  },
+  {
+    img: tasksImg,
+    alt: "Tasks image",
+    title: "Tasks",
+    component: ToDo,
   },
   {
     img: controllerIcon,

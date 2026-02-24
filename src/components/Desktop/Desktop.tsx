@@ -71,16 +71,6 @@ export default function Desktop({ darkTheme, setDarkTheme }: DesktopProps) {
           <span>CV</span>
         </div>
         <a
-          href="https://to-do-list-burd.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className={styles.box}>
-            <img src={notesImg} alt="Notes icon"></img>
-            <span>Tasks</span>
-          </div>
-        </a>
-        <a
           href="https://github.com/irizow"
           target="_blank"
           rel="noopener noreferrer"

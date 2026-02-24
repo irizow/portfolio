@@ -18,7 +18,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
     "react-sprite-animator": "^2.0.2",
-    "react-swipeable": "^7.0.1"
+    "react-swipeable": "^7.0.1",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
