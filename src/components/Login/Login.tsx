@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase";
 import { EmailAuthCredential } from "firebase/auth/web-extension";
+import { useAuth } from "../../hooks/useAuth";
 
 type AuthError = Error & {
   code?: string;
@@ -22,17 +23,9 @@ export const Login = () => {
   const [userName, setUserName] = useState<string>("");
   const [action, setAction] = useState<"login" | "signup">("signup");
   const [error, setError] = useState<string>("");
-  const currUser = auth.currentUser;
-  const [nickName, setNickName] = useState<string>(currUser?.displayName ?? "");
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
-
-    return unsubscribe;
-  }, []);
+  const { user, loading } = useAuth();
+  const [nickName, setNickName] = useState<string>(user?.displayName ?? "");
+  //const [user, setUser] = useState<User | null>(null);
 
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
@@ -75,9 +68,9 @@ export const Login = () => {
   };
 
   const handleUserName = async (username: string) => {
-    if (currUser) {
+    if (user) {
       try {
-        await updateProfile(currUser, { displayName: username });
+        await updateProfile(user, { displayName: username });
         setNickName(username);
       } catch (error) {
         console.error(error);
@@ -95,6 +88,7 @@ export const Login = () => {
       setError("Something went wrong signing out. Maybe refresh the page?");
     }
   };
+  if (loading) return <div className={styles.credentials}>Loading...</div>;
 
   return (
     <div className={styles.credentials}>
@@ -135,7 +129,7 @@ export const Login = () => {
           </form>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
-      ) : user && nickName ? (
+      ) : user && user.displayName ? (
         <div className={styles.identified}>
           Nice to see you again {user.displayName}
           <button onClick={() => handleUserName("")}>

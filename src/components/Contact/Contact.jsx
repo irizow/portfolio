@@ -61,7 +61,7 @@ export default function Contact() {
       ) : (
         <>
           <div>
-            <h2>Let's have a chat!</h2>
+            <h2>Let&apos;s have a chat!</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <label>

@@ -1,5 +1,3 @@
-import { motion, useScroll } from "framer-motion";
-import { useRef } from "react";
 import styles from "./about.module.css";
 import { stackIcons } from "../../assets/images/stackimages";
 

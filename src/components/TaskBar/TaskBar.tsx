@@ -13,7 +13,7 @@ import calculatorIcon from "../../assets/icons/calculator-icon.webp";
 import gameIcon from "../../assets/icons/controller-icon.webp";
 import GameMenu from "../GameMenu/GameMenu.jsx";
 import userIcon from "../../assets/icons/user.png";
-import { auth } from "../../firebase";
+import { useAuth } from "../../hooks/useAuth.js";
 
 interface TaskBarProps {
   setIsLogin: React.Dispatch<SetStateAction<boolean>>;
@@ -30,7 +30,7 @@ export default function TaskBar({
   const [isGameMenu, setIsGameMenu] = useState(false);
   const gameRef = useRef<HTMLImageElement | null>(null);
   const color = darkTheme ? "white" : "black";
-  const user = auth.currentUser;
+  const { user, loading } = useAuth();
 
   const handleClickOut = (e: MouseEvent) => {
     if (

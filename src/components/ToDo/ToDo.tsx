@@ -2,26 +2,109 @@ import { useEffect, useState } from "react";
 import styles from "./todo.module.css";
 import { v1 as uuidv1 } from "uuid";
 import trashIcon from "../../assets/icons/trash.png";
+import { db } from "../../firebase";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  FieldValue,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
+import { useAuth } from "../../hooks/useAuth";
+import {
+  loadTodosFromLocalStorage,
+  LOCAL_STORAGE_KEY,
+  saveTodosToLocalStorage,
+} from "./utils";
 
 const PRIORITIES = ["low", "medium", "high"] as const;
 
 type Priority = (typeof PRIORITIES)[number];
 
-type Todo = {
+export type Todo = {
   id: string;
   todo: string;
-  status: "pending" | "done";
+  completed: boolean;
   priority: Priority;
+  createdAt: FieldValue;
 };
 
 export const ToDo = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
   const [error, setError] = useState<string>("");
+  const { user } = useAuth();
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    if (!user) return loadTodosFromLocalStorage();
+    return [];
+  });
+  const userName = user?.displayName;
+  const posApostrophe =
+    userName?.charAt(userName.length - 1) === "s" ? "'" : "'s";
+  const todosOwner = user
+    ? userName
+      ? `${userName + posApostrophe}`
+      : "Your"
+    : "Iris'";
+
+  useEffect(() => {
+    if (!user) {
+      saveTodosToLocalStorage(todos);
+    }
+  }, [todos, user]);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const migrateLocalTodos = async () => {
+      const localTodos = loadTodosFromLocalStorage();
+
+      if (localTodos.length > 0) {
+        try {
+          for (const todo of localTodos) {
+            await addDoc(collection(db, "users", user.uid, "todos"), {
+              todo: todo.todo,
+              completed: todo.completed,
+              priority: todo.priority,
+              createdAt: serverTimestamp(),
+            });
+          }
+          localStorage.removeItem(LOCAL_STORAGE_KEY);
+        } catch (err) {
+          console.error("Failed to migrate local todos", err);
+        }
+      }
+    };
+
+    migrateLocalTodos();
+
+    const q = query(
+      collection(db, "users", user.uid, "todos"),
+      orderBy("createdAt", "desc"),
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const todoList = snapshot.docs.map(
+        (doc) =>
+          ({
+            id: doc.id,
+            ...doc.data(),
+          }) as Todo,
+      );
+      console.log("tdl", todoList);
+      setTodos(todoList);
+    });
+
+    return () => unsubscribe();
+  }, [user]);
 
   const percentageDone =
     todos.length === 0
       ? 0
-      : (todos.filter((todo) => todo.status === "done").length * 100) /
+      : (todos.filter((todo) => todo.completed === true).length * 100) /
         todos.length;
 
   const [currTodo, setCurrTodo] = useState<{
@@ -29,52 +112,61 @@ export const ToDo = () => {
     priority: Priority;
   }>({ todo: "", priority: "low" });
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     setError("");
-    if (!currTodo.todo)
+    if (!currTodo.todo.trim())
       return setError("Ooops, looks like you tried to add an empty task");
-    const id = uuidv1();
-    setTodos((prev) => [
-      ...prev,
-      {
-        id,
-        todo: currTodo.todo,
-        status: "pending",
-        priority: currTodo.priority,
-      },
-    ]);
+    const todo = {
+      todo: currTodo.todo,
+      completed: false,
+      priority: currTodo.priority,
+      createdAt: serverTimestamp(),
+    };
+    if (user) {
+      await addDoc(collection(db, "users", user.uid, "todos"), todo);
+    } else {
+      setTodos((prev) => [...prev, { ...todo, id: uuidv1() }]);
+    }
     setCurrTodo({ ...currTodo, todo: "" });
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     setError("");
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+    if (user) {
+      await deleteDoc(doc(db, "users", user.uid, "todos", id));
+    } else {
+      const newTodos = todos.filter((todo) => todo.id !== id);
+      setTodos(newTodos);
+    }
   };
 
-  const toggleStatus = (id: string) => {
+  const toggleStatus = async (id: string, completed: boolean) => {
     setError("");
-    setTodos((prevTodos) => {
-      return prevTodos.map((prevTodo) =>
-        prevTodo.id === id
-          ? {
-              ...prevTodo,
-              status: prevTodo.status === "done" ? "pending" : "done",
-            }
-          : prevTodo,
-      );
-    });
+    if (user) {
+      await updateDoc(doc(db, "users", user.uid, "todos", id), {
+        completed: !completed,
+      });
+    } else {
+      setTodos((prevTodos) => {
+        return prevTodos.map((prevTodo) =>
+          prevTodo.id === id
+            ? {
+                ...prevTodo,
+                completed: !prevTodo.completed,
+              }
+            : prevTodo,
+        );
+      });
+    }
   };
   return (
     <section className={styles.tasks}>
-      <h3>My ToDo's</h3>
+      <h3>{todosOwner} ToDos</h3>
       <div className={styles.todoinput}>
         <input
           placeholder="What's on you plate?"
           onChange={(e) => setCurrTodo({ ...currTodo, todo: e.target.value })}
-          onKeyDown={(e) =>
-            e.key === "Enter" || e.key === " " ? handleAdd() : null
-          }
+          onKeyDown={(e) => (e.key === "Enter" ? handleAdd() : null)}
           value={currTodo.todo}
           type="text"
         ></input>
@@ -114,19 +206,19 @@ const TodoRow = ({
   handleDelete,
 }: {
   todo: Todo;
-  toggleStatus: (id: string) => void;
+  toggleStatus: (id: string, completed: boolean) => void;
   handleDelete: (id: string) => void;
 }) => {
   return (
     <div
       key={todo.id}
-      className={`${todo.status === "done" ? styles.done : ""} ${styles.todorow} ${styles[todo.priority]}`}
+      className={`${todo.completed ? styles.done : ""} ${styles.todorow} ${styles[todo.priority]}`}
     >
       <button
         className={styles.status_button}
-        onClick={() => toggleStatus(todo.id)}
+        onClick={() => toggleStatus(todo.id, todo.completed)}
       >
-        {todo.status === "done" && "x"}
+        {todo.completed && "x"}
       </button>{" "}
       <div className={styles.status_marker}></div>
       <p>{todo.todo}</p>

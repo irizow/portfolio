@@ -68,6 +68,9 @@ export default function SmallWindow({
             className={styles.wndbtn}
             src={minimizeIcon}
             alt="minimize window icon"
+            onClick={() => {
+              setActiveProject(null);
+            }}
           ></img>
           <img
             className={styles.wndbtn}
