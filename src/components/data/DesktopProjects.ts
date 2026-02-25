@@ -32,7 +32,7 @@ export const DesktopProjects: Project<any>[] = [
   {
     img: tasksImg,
     alt: "Tasks image",
-    title: "Tasks",
+    title: "Todos",
     component: ToDo,
   },
   {

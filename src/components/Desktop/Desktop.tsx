@@ -44,7 +44,10 @@ export default function Desktop({ darkTheme, setDarkTheme }: DesktopProps) {
           setActiveProject={setActiveProject}
           projectIsGame={activeProject.title === "Pkmn"}
         >
-          <activeProject.component {...activeProject.props} />
+          <activeProject.component
+            {...activeProject.props}
+            {...(activeProject.title === "Todos" ? { setIsLogin } : {})}
+          />
         </SmallWindow>
       )}
       <div className={styles.boxescontainer}>

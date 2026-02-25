@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import styles from "./todo.module.css";
 import { v1 as uuidv1 } from "uuid";
 import trashIcon from "../../assets/icons/trash.png";
@@ -34,7 +34,11 @@ export type Todo = {
   createdAt: FieldValue;
 };
 
-export const ToDo = () => {
+export const ToDo = ({
+  setIsLogin,
+}: {
+  setIsLogin: React.Dispatch<SetStateAction<boolean>>;
+}) => {
   const [error, setError] = useState<string>("");
   const { user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>(() => {
@@ -196,6 +200,11 @@ export const ToDo = () => {
         ))}
       </div>
       <ProgressBar percentage={percentageDone} />
+      {!user && (
+        <button className={styles.login} onClick={() => setIsLogin(true)}>
+          Login to store todos
+        </button>
+      )}
     </section>
   );
 };

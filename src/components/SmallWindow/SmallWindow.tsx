@@ -5,10 +5,10 @@ import closeIcon from "../../assets/images/close.png";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { motion, useDragControls } from "framer-motion";
 import { useIsMobile } from "../../hooks/useIsMobile";
-import { DesktopProject } from "../data/DesktopProjects";
+import { Project } from "../data/DesktopProjects";
 
 interface SmallWindowProps {
-  setActiveProject: React.Dispatch<SetStateAction<DesktopProject | null>>;
+  setActiveProject: React.Dispatch<SetStateAction<Project | null>>;
   children: React.ReactNode;
   projectIsGame: boolean;
 }
